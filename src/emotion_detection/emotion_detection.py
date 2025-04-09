@@ -22,7 +22,12 @@ def emotion_detector(text_to_analyse):
                 score=formatted_response['emotionPredictions'][0]['emotion'][emotion] 
                 label=emotion
         emotions['dominant_emotions']=label
-
+    elif response.status_code == 400:
+        emotions['anger']=None
+        emotions['disgust']=None
+        emotions['fear']=None
+        emotions['sadness']=None
+        emotions['dominant_emotions']=None
     elif response.status_code == 500:
         emotions=None  
 
